@@ -31,6 +31,8 @@ import clientLogoAz from "@/assets/client-logo-az.png";
 import clientLogoGwa from "@/assets/client-logo-gwa.png";
 import clientLogoAes from "@/assets/client-logo-aes.png";
 import clientLogoProfessionals from "@/assets/client-logo-professionals.png";
+import roomReadySystemPreview from "@/assets/room-ready-linen-system.webp";
+import changeoverPacksPreview from "@/assets/room-ready-changeover-packs.webp";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -482,6 +484,108 @@ const Index = () => {
         </div>
       </section>
 
+      {/* ═══ Room Ready Linen Systems ═══ */}
+      <section id="room-ready" className="relative overflow-hidden bg-background py-16 md:py-24">
+        <div className="pointer-events-none absolute inset-0">
+          <div className="absolute -left-24 top-16 h-80 w-80 rounded-full bg-primary/5 blur-3xl" />
+          <div className="absolute -right-24 bottom-16 h-96 w-96 rounded-full bg-primary/5 blur-3xl" />
+        </div>
+
+        <div className="container relative z-10">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeUp}
+            className="mx-auto mb-10 max-w-3xl text-center md:mb-14"
+          >
+            <div className="mb-4 flex items-center justify-center gap-2 text-primary">
+              <Layers className="h-5 w-5" />
+              <span className="text-sm font-semibold uppercase tracking-[0.2em] font-sans">Room Ready Resources</span>
+            </div>
+            <h2 className="heading-underline text-4xl font-bold text-foreground md:text-5xl lg:text-6xl">
+              Room Ready Linen Systems
+            </h2>
+            <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg">
+              See how LinExo keeps mine-site and accommodation linen organised, changeover-ready and easy for teams to manage.
+            </p>
+          </motion.div>
+
+          <div className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-2">
+            <motion.article
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeLeft}
+              className="flex h-full flex-col overflow-hidden rounded-3xl border border-border/70 bg-card shadow-xl"
+            >
+              <a
+                href="/resources/linexo-room-ready-linen-system.pdf"
+                target="_blank"
+                rel="noreferrer"
+                className="group flex aspect-[4/5] items-center justify-center overflow-hidden bg-white p-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 md:p-6"
+                aria-label="View the full Room Ready Linen System infographic (opens in a new tab)"
+              >
+                <img
+                  src={roomReadySystemPreview}
+                  alt="LinExo Room Ready Linen System workflow showing clean delivery, storage setup, room servicing and dirty linen collection"
+                  loading="lazy"
+                  decoding="async"
+                  className="h-full w-full object-contain transition-transform duration-500 group-hover:scale-[1.02]"
+                />
+              </a>
+              <div className="flex flex-1 flex-col p-6 md:p-8">
+                <h3 className="text-2xl font-bold text-foreground">Room Ready Linen System</h3>
+                <p className="mt-3 flex-1 leading-relaxed text-muted-foreground">
+                  A practical four-stage workflow covering clean delivery, storage setup, room servicing and dirty-linen collection.
+                </p>
+                <Button variant="outline" className="mt-6 w-full sm:w-fit" asChild>
+                  <a href="/resources/linexo-room-ready-linen-system.pdf" target="_blank" rel="noreferrer">
+                    View full infographic <span className="sr-only">(opens in a new tab)</span>
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </a>
+                </Button>
+              </div>
+            </motion.article>
+
+            <motion.article
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeRight}
+              className="flex h-full flex-col overflow-hidden rounded-3xl border border-border/70 bg-card shadow-xl"
+            >
+              <a
+                href="/resources/linexo-room-ready-changeover-packs.pdf"
+                target="_blank"
+                rel="noreferrer"
+                className="group flex aspect-[4/5] items-center justify-center overflow-hidden bg-white p-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 md:p-6"
+                aria-label="View the full Room Ready Changeover Packs infographic (opens in a new tab)"
+              >
+                <img
+                  src={changeoverPacksPreview}
+                  alt="LinExo Room Ready Changeover Packs infographic comparing Standard and Deluxe linen packs for mining camps"
+                  loading="lazy"
+                  decoding="async"
+                  className="h-full w-full object-contain transition-transform duration-500 group-hover:scale-[1.02]"
+                />
+              </a>
+              <div className="flex flex-1 flex-col p-6 md:p-8">
+                <h3 className="text-2xl font-bold text-foreground">Room Ready Changeover Packs</h3>
+                <p className="mt-3 flex-1 leading-relaxed text-muted-foreground">
+                  Compare the Standard and Deluxe pack options designed to make room changeovers faster and more consistent.
+                </p>
+                <Button variant="outline" className="mt-6 w-full sm:w-fit" asChild>
+                  <a href="/resources/linexo-room-ready-changeover-packs.pdf" target="_blank" rel="noreferrer">
+                    View full infographic <span className="sr-only">(opens in a new tab)</span>
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </a>
+                </Button>
+              </div>
+            </motion.article>
+          </div>
+        </div>
+      </section>
       {/* ═══ Trusted by the Goldfields — Logo Carousel ═══ */}
       <section className="py-8 overflow-hidden bg-secondary/30">
         <div className="container">
@@ -694,8 +798,9 @@ const Index = () => {
                         toast({ title: "Message sent!", description: "We'll be in touch shortly." });
                         form.reset();
                         setSelectedService("");
-                      } catch (err: any) {
-                        toast({ title: "Failed to send", description: err.message || "Please try again later.", variant: "destructive" });
+                      } catch (err: unknown) {
+                        const message = err instanceof Error ? err.message : "Please try again later.";
+                        toast({ title: "Failed to send", description: message, variant: "destructive" });
                       } finally {
                         setSubmitting(false);
                       }
